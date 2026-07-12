@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WhatsApp Backend Integration Guide — Qualitty Fabrics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.guide-main { padding: 60px 5% 100px; max-width: 900px; margin: 0 auto; }
+.step-block { background: var(--navy-mid); border: 1px solid rgba(201,168,76,.15); border-radius: 10px; padding: 2rem; margin-bottom: 2rem; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--gold); color: var(--navy); border-radius: 50%; font-weight: 700; font-size: .9rem; margin-bottom: 1rem; }
+.step-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: .6rem; }
+.step-desc { color: var(--white-dim); font-size: .9rem; line-height: 1.85; margin-bottom: 1.2rem; }
+pre { background: #060e1c; border: 1px solid rgba(201,168,76,.2); border-radius: 6px; padding: 1.2rem 1.5rem; overflow-x: auto; font-size: .82rem; line-height: 1.7; color: #a8d8a8; margin: 1rem 0; }
+code { font-family: 'Courier New', monospace; }
+.tag { display: inline-block; background: var(--gold-dim); border: 1px solid rgba(201,168,76,.3); color: var(--gold); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 3px; margin-right: .4rem; }
+.note { background: rgba(201,168,76,.08); border-left: 3px solid var(--gold); padding: .8rem 1rem; border-radius: 0 4px 4px 0; font-size: .85rem; color: var(--white-dim); margin: 1rem 0; }
+.note i { color: var(--gold); margin-right: .4rem; }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+.method-card { background: var(--navy); border: 1px solid rgba(201,168,76,.15); border-radius: 8px; padding: 1.4rem; }
+.method-card h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--gold); margin-bottom: .5rem; }
+.method-card p { font-size: .8rem; color: var(--white-dim); line-height: 1.7; }
+.method-card .pros { margin-top: .8rem; font-size: .78rem; color: #7ecf7e; }
+.method-card .cons { font-size: .78rem; color: #cf7e7e; }
+@media(max-width:640px){ .method-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / WhatsApp Integration Guide</div>
+    <h1>WhatsApp <em>Backend</em> Integration</h1>
+    <p>A complete developer guide — from simple wa.me links to full WhatsApp Business API with Node.js backend and email notifications.</p>
+  </div>
+</div>
+
+<div class="guide-main">
+
+  <div class="note"><i class="fa-solid fa-circle-info"></i> <strong>Currently active on this website:</strong> The contact form sends enquiry details directly to WhatsApp via wa.me link. To receive form data by email or a CRM, follow the steps below.</div>
+
+  <!-- OVERVIEW -->
+  <div class="step-block reveal">
+    <div class="step-num">0</div>
+    <div class="step-title">Choose Your Integration Method</div>
+    <div class="step-desc">There are 3 common approaches to WhatsApp backend integration. Pick based on your budget and technical needs.</div>
+    <div class="method-grid">
+      <div class="method-card">
+        <h4><i class="fa-solid fa-link"></i> Method A — wa.me Link</h4>
+        <p>Form data is formatted and user clicks to open WhatsApp with pre-filled message. No server needed.</p>
+        <div class="pros">✅ Free &nbsp;✅ No server &nbsp;✅ Already implemented</div>
+        <div class="cons">❌ User must click &nbsp;❌ No email backup</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-solid fa-server"></i> Method B — Email + WA Link</h4>
+        <p>Form submits to a backend (Node.js/PHP). Backend emails you AND opens WA link for user. Best for small business.</p>
+        <div class="pros">✅ You get email copy &nbsp;✅ Cheap (free tier)</div>
+        <div class="cons">❌ Needs basic server &nbsp;❌ User still clicks WA</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-brands fa-whatsapp"></i> Method C — WA Business API</h4>
+        <p>Full official WhatsApp Business API. Server auto-sends WA message to your number without user interaction.</p>
+        <div class="pros">✅ Fully automated &nbsp;✅ Professional</div>
+        <div class="cons">❌ Paid (~₹5–15/msg) &nbsp;❌ Needs Meta approval</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-solid fa-bolt"></i> Method D — Formspree / Netlify</h4>
+        <p>No-code solution. Point your form to Formspree — they email you on every submission. Free tier available.</p>
+        <div class="pros">✅ Zero code &nbsp;✅ Free tier (50 submissions/mo)</div>
+        <div class="cons">❌ No WA auto-send &nbsp;❌ Branding on free tier</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD B: Node.js -->
+  <div class="step-block reveal">
+    <div class="step-num">1</div>
+    <div class="step-title"><span class="tag">Method B</span> Node.js Backend — Email + WhatsApp</div>
+    <div class="step-desc">This is the recommended approach. Set up a simple Node.js server that receives the form, emails you the enquiry, and optionally sends a WhatsApp message via Twilio.</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin-bottom:.5rem"><strong style="color:var(--white)">Step 1 — Install Node.js packages</strong></p>
+    <pre><code>npm init -y
+npm install express nodemailer cors dotenv</code></pre>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Step 2 — Create server.js</strong></p>
+    <pre><code>// server.js — Qualitty Fabrics Contact Form Backend
+require('dotenv').config();
+const express  = require('express');
+const nodemailer = require('nodemailer');
+const cors     = require('cors');
+const app      = express();
+
+app.use(cors({ origin: 'https://www.qualittyfabrics.in' }));
+app.use(express.json());
+
+// Email transporter (using Gmail — use App Password)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,   // your Gmail
+    pass: process.env.EMAIL_PASS,   // Gmail App Password
+  }
+});
+
+app.post('/submit-enquiry', async (req, res) => {
+  const { name, company, email, phone, fabric, qty, country, message } = req.body;
+
+  // Validate required fields
+  if (!name || !email || !fabric) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // Build email content
+  const emailBody = `
+    New Enquiry — Qualitty Fabrics Website
+    =======================================
+    Name     : ${name}
+    Company  : ${company || '—'}
+    Email    : ${email}
+    Phone    : ${phone || '—'}
+    Country  : ${country || '—'}
+    Fabric   : ${fabric}
+    Quantity : ${qty || '—'}
+    Message  : ${message || '—'}
+    =======================================
+    Received : ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+  `;
+
+  try {
+    // 1. Send email to Qualitty Fabrics team
+    await transporter.sendMail({
+      from: `"Qualitty Fabrics Website" &lt;${process.env.EMAIL_USER}&gt;`,
+      to: 'info@qualittyfabrics.in',       // &lt;-- your email here
+      replyTo: email,
+      subject: `New Fabric Enquiry: ${fabric} — ${name}`,
+      text: emailBody,
+    });
+
+    // 2. Send confirmation to the customer
+    await transporter.sendMail({
+      from: `"Qualitty Fabrics" &lt;${process.env.EMAIL_USER}&gt;`,
+      to: email,
+      subject: 'We received your enquiry — Qualitty Fabrics',
+      text: `Dear ${name},\n\nThank you for your enquiry about ${fabric}.\nOur team will respond within 24 hours.\n\nBest regards,\nQualitty Fabrics\n+91 97159 88111\nwww.qualittyfabrics.in`,
+    });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Email failed' });
+  }
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+</code></pre>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Step 3 — Create .env file</strong></p>
+    <pre><code># .env — DO NOT commit this to GitHub
+EMAIL_USER=yourname@gmail.com
+EMAIL_PASS=your_gmail_app_password</code></pre>
+
+    <div class="note"><i class="fa-solid fa-key"></i> Get Gmail App Password: Google Account → Security → 2FA → App Passwords → Generate. Use that 16-char password, NOT your Gmail password.</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Step 4 — Update contact.html form submit function</strong></p>
+    <pre><code>async function submitForm() {
+  const name   = document.getElementById('f_name').value.trim();
+  const email  = document.getElementById('f_email').value.trim();
+  const fabric = document.getElementById('f_fabric').value;
+  if (!name || !email || !fabric) { alert('Please fill required fields.'); return; }
+
+  const payload = {
+    name,
+    email,
+    company  : document.getElementById('f_company').value,
+    phone    : document.getElementById('f_phone').value,
+    country  : document.getElementById('f_country').value,
+    fabric,
+    qty      : document.getElementById('f_qty').value,
+    message  : document.getElementById('f_msg').value,
+  };
+
+  try {
+    const res = await fetch('https://YOUR-SERVER-URL/submit-enquiry', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('formBody').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      // Also open WA so customer can follow up instantly
+      const waText = `New enquiry from ${name} (${email}) for ${fabric}`;
+      window.open('https://wa.me/919715988111?text=' + encodeURIComponent(waText), '_blank');
+    }
+  } catch (err) {
+    alert('Something went wrong. Please try again or WhatsApp us directly.');
+  }
+}</code></pre>
+  </div>
+
+  <!-- METHOD C: WA Business API -->
+  <div class="step-block reveal">
+    <div class="step-num">2</div>
+    <div class="step-title"><span class="tag">Method C</span> WhatsApp Business API (Official)</div>
+    <div class="step-desc">This sends an automated WhatsApp message to your business number when someone fills the form — fully hands-free. Requires a Meta Business account and approval (takes 1–3 days).</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin-bottom:.5rem"><strong style="color:var(--white)">Setup (one-time)</strong></p>
+    <div class="note"><i class="fa-solid fa-list-check"></i> 1. Create Meta Business account at business.facebook.com &nbsp;|&nbsp; 2. Add WhatsApp Product &nbsp;|&nbsp; 3. Get a permanent Access Token &nbsp;|&nbsp; 4. Note your Phone Number ID</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Add to server.js — after sending email, add this:</strong></p>
+    <pre><code>// WhatsApp Business API — send message to your own number
+const WA_TOKEN   = process.env.WA_ACCESS_TOKEN;   // from Meta
+const WA_PHONE_ID = process.env.WA_PHONE_NUMBER_ID; // from Meta
+
+async function sendWhatsAppAlert(data) {
+  const { name, fabric, email, phone } = data;
+  const url = `https://graph.facebook.com/v18.0/${WA_PHONE_ID}/messages`;
+
+  await fetch(url, {
+    method : 'POST',
+    headers: {
+      'Authorization': `Bearer ${WA_TOKEN}`,
+      'Content-Type' : 'application/json',
+    },
+    body: JSON.stringify({
+      messaging_product: 'whatsapp',
+      to  : '919715988111',      // YOUR WhatsApp number with country code
+      type: 'text',
+      text: {
+        body: `🧵 *New Enquiry — Qualitty Fabrics*\n\n*Name:* ${name}\n*Fabric:* ${fabric}\n*Email:* ${email}\n*Phone:* ${phone || '—'}\n\nReply to this message to respond.`
+      }
+    })
+  });
+}
+
+// Call it inside your /submit-enquiry route after email:
+// await sendWhatsAppAlert(req.body);</code></pre>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Add to .env</strong></p>
+    <pre><code>WA_ACCESS_TOKEN=EAAxxxxxxxxxxxxxxxx
+WA_PHONE_NUMBER_ID=1234567890123</code></pre>
+  </div>
+
+  <!-- METHOD D: Formspree No-Code -->
+  <div class="step-block reveal">
+    <div class="step-num">3</div>
+    <div class="step-title"><span class="tag">Method D</span> No-Code Option — Formspree (Easiest)</div>
+    <div class="step-desc">If you don't want to manage a server at all, Formspree handles form submissions and emails them to you. Free for 50 submissions/month — paid plans for more.</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin-bottom:.5rem"><strong style="color:var(--white)">Step 1 — Sign up and get your form endpoint</strong></p>
+    <div class="note"><i class="fa-solid fa-arrow-right"></i> Go to <strong>formspree.io</strong> → New Form → Copy your form ID (looks like: <code>xaybzzzz</code>)</div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Step 2 — Replace submitForm() in contact.html</strong></p>
+    <pre><code>async function submitForm() {
+  const name   = document.getElementById('f_name').value.trim();
+  const email  = document.getElementById('f_email').value.trim();
+  const fabric = document.getElementById('f_fabric').value;
+  if (!name || !email || !fabric) { alert('Please fill required fields.'); return; }
+
+  const formData = new FormData();
+  formData.append('name',    name);
+  formData.append('email',   email);
+  formData.append('company', document.getElementById('f_company').value);
+  formData.append('phone',   document.getElementById('f_phone').value);
+  formData.append('fabric',  fabric);
+  formData.append('qty',     document.getElementById('f_qty').value);
+  formData.append('country', document.getElementById('f_country').value);
+  formData.append('message', document.getElementById('f_msg').value);
+
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method : 'POST',
+      body   : formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('formBody').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  } catch (err) {
+    alert('Submission failed. Please WhatsApp us directly.');
+  }
+}</code></pre>
+
+    <div class="note"><i class="fa-solid fa-circle-check"></i> That's it! Formspree will email <strong>info@qualittyfabrics.in</strong> for every submission. No server needed.</div>
+  </div>
+
+  <!-- DEPLOYMENT -->
+  <div class="step-block reveal">
+    <div class="step-num">4</div>
+    <div class="step-title"><i class="fa-solid fa-rocket"></i> Deploy the Node.js Backend (Free)</div>
+    <div class="step-desc">Best free hosting options for your Node.js server:</div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <h4><i class="fa-solid fa-cloud"></i> Railway.app</h4>
+        <p>Easiest. Connect GitHub repo → auto deploy. Free $5/month credit. Recommended for beginners.</p>
+        <div class="pros">✅ railway.app</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-solid fa-server"></i> Render.com</h4>
+        <p>Free tier available. Slightly slower cold starts but reliable. Good for production.</p>
+        <div class="pros">✅ render.com</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-brands fa-aws"></i> AWS / DigitalOcean</h4>
+        <p>Most professional. AWS EC2 free tier or DigitalOcean Droplet (~₹400/month). Best for scale.</p>
+        <div class="pros">✅ aws.amazon.com / digitalocean.com</div>
+      </div>
+      <div class="method-card">
+        <h4><i class="fa-solid fa-bolt"></i> Vercel (Serverless)</h4>
+        <p>Convert server.js to a serverless function. Vercel hosts for free. No server management.</p>
+        <div class="pros">✅ vercel.com — Free tier</div>
+      </div>
+    </div>
+
+    <p style="color:var(--white-dim);font-size:.85rem;margin:.8rem 0 .5rem"><strong style="color:var(--white)">Quick deploy to Railway (3 commands)</strong></p>
+    <pre><code># 1. Push code to GitHub
+git init && git add . && git commit -m "Qualitty backend"
+git remote add origin https://github.com/yourname/qualitty-backend.git
+git push -u origin main
+
+# 2. Go to railway.app → New Project → Deploy from GitHub → Select repo
+# 3. Add environment variables in Railway dashboard:
+#    EMAIL_USER, EMAIL_PASS, WA_ACCESS_TOKEN (if using WA API)
+
+# Railway will give you a URL like: https://qualitty-backend.up.railway.app
+# Use that URL in your contact.html fetch() call</code></pre>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="step-block reveal" style="border-color:rgba(201,168,76,.4)">
+    <div class="step-title" style="color:var(--gold)"><i class="fa-solid fa-star"></i> Recommended Setup for Qualitty Fabrics</div>
+    <div class="step-desc">Based on your business size and needs, here's what I recommend:</div>
+    <ul style="color:var(--white-dim);font-size:.9rem;line-height:2;padding-left:1.2rem">
+      <li><strong style="color:var(--white)">Phase 1 (Now — Zero cost):</strong> Use the current wa.me link setup already in the website. ✅ Done.</li>
+      <li><strong style="color:var(--white)">Phase 2 (When ready — Easy):</strong> Add Formspree to get email copies of every enquiry. 30 minutes, no server.</li>
+      <li><strong style="color:var(--white)">Phase 3 (Growth — Professional):</strong> Node.js backend on Railway + Gmail notifications + WhatsApp Business API for auto-WA messages.</li>
+    </ul>
+    <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="contact.html" class="btn-primary"><i class="fa-solid fa-envelope"></i> &nbsp;See Contact Form</a>
+      <a href="https://wa.me/919715988111" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> &nbsp;Test WhatsApp Now</a>
+    </div>
+  </div>
+
+</div>
+
+<div id="footer-slot"></div>
+<div id="wa-slot"></div>
+<script src="shared.js"></script>
+<script>initPage('');</script>
+</body>
+</html>

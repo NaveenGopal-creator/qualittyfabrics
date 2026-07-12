@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qualitty Fabrics — Premium Textile Manufacturer, Erode, Tamil Nadu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(125deg,#0a1628 0%,#0f1f38 50%,#0a1628 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(201,168,76,.035) 59px,rgba(201,168,76,.035) 60px),repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,168,76,.035) 59px,rgba(201,168,76,.035) 60px);}
+.hero-orb{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 70%);right:-150px;top:50%;transform:translateY(-50%);z-index:0;}
+.hero-content{position:relative;z-index:1;max-width:720px;}
+.hero-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.hero-title{font-family:var(--font-display);font-size:clamp(3rem,6.5vw,5.8rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1.5rem;}
+.hero-title em{font-style:italic;color:var(--gold);font-weight:400;}
+.hero-sub{font-size:1rem;color:var(--white-dim);max-width:520px;margin-bottom:2.5rem;line-height:1.85;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.hero-badges{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
+.hero-badge-img{height:42px;border-radius:4px;opacity:.9;transition:opacity .2s;filter:brightness(1.1);}
+.hero-badge-img:hover{opacity:1;}
+
+/* STATS */
+.stats-bar{background:var(--navy-mid);border-top:1px solid rgba(201,168,76,.2);border-bottom:1px solid rgba(201,168,76,.2);padding:2.5rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat-item{text-align:center;}
+.stat-number{font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-label{font-size:.75rem;color:var(--white-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:.4rem;}
+
+/* ABOUT STRIP */
+.about-strip{padding:90px 5%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.about-img-box{border-radius:6px;overflow:hidden;aspect-ratio:4/3;}
+.about-img-box img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.about-img-box:hover img{transform:scale(1.04);}
+.about-img-box:first-child{grid-column:span 2;aspect-ratio:16/7;}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.feat-card{background:var(--white-faint);border:1px solid rgba(201,168,76,.15);border-radius:6px;padding:1.2rem;transition:border-color .25s;}
+.feat-card:hover{border-color:var(--gold);}
+.feat-icon{font-size:1.4rem;margin-bottom:.5rem;}
+.feat-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.2rem;}
+.feat-desc{font-size:.78rem;color:var(--white-dim);line-height:1.6;}
+
+/* PRODUCTS PREVIEW */
+.products-preview{background:var(--navy-mid);padding:90px 5%;}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
+.prod-card{background:var(--navy);border:1px solid rgba(201,168,76,.12);border-radius:8px;overflow:hidden;transition:border-color .3s,transform .3s;text-decoration:none;color:inherit;}
+.prod-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.prod-img{height:200px;overflow:hidden;position:relative;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.prod-card:hover .prod-img img{transform:scale(1.06);}
+.prod-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7) 0%,transparent 60%);}
+.prod-body{padding:1.2rem 1.4rem;}
+.prod-tag{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.prod-name{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--white);margin-bottom:.4rem;}
+.prod-desc{font-size:.8rem;color:var(--white-dim);line-height:1.7;}
+.view-all-wrap{text-align:center;margin-top:2.5rem;}
+
+/* CERTS */
+.certs-section{padding:90px 5%;text-align:center;}
+.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+.cert-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,.18);border-radius:8px;padding:2rem 1.5rem;transition:border-color .3s,transform .3s;}
+.cert-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.cert-card img{height:64px;object-fit:contain;margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto;}
+.cert-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:.3rem;}
+.cert-no{font-size:.72rem;color:var(--white-dim);line-height:1.6;}
+
+/* PROCESS */
+.process-section{background:var(--navy-mid);padding:90px 5%;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;position:relative;}
+.process-grid::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+.proc-step{text-align:center;}
+.proc-icon{width:64px;height:64px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.5);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;position:relative;z-index:1;}
+.proc-icon i{font-size:1.4rem;color:var(--gold);}
+.proc-title{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem;}
+.proc-desc{font-size:.8rem;color:var(--white-dim);line-height:1.7;}
+
+/* CTA BANNER */
+.cta-banner{padding:80px 5%;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15);text-align:center;}
+.cta-banner h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);margin-bottom:.8rem;}
+.cta-banner h2 em{font-style:italic;color:var(--gold);}
+.cta-banner p{color:var(--white-dim);margin-bottom:2rem;font-size:.95rem;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+@media(max-width:768px){
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .about-strip{grid-template-columns:1fr;gap:2.5rem;}
+  .prod-grid{grid-template-columns:1fr 1fr;}
+  .certs-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid::before{display:none;}
+  .about-features{grid-template-columns:1fr;}
+}
+@media(max-width:480px){.prod-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i class="fa-solid fa-location-dot" style="color:var(--gold)"></i> Perundurai, Erode, Tamil Nadu, India</div>
+    <h1 class="hero-title">Where threads<br>become <em>masterpieces</em></h1>
+    <p class="hero-sub">Premium textile fabric manufacturer specializing in MultiLayer, Dobby, Jacquard, Yarn Dyed, Satin and specialty fabrics — trusted by global brands for over 20 years.</p>
+    <div class="hero-actions">
+      <a href="products.html" class="btn-primary"><i class="fa-solid fa-layer-group"></i> &nbsp;Explore Fabrics</a>
+      <a href="contact.html" class="btn-outline"><i class="fa-regular fa-envelope"></i> &nbsp;Request a Sample</a>
+    </div>
+    <div class="hero-badges" id="heroBadges"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-number" data-target="20">0</div><div class="stat-label"><i class="fa-solid fa-award" style="color:var(--gold)"></i> Years of Expertise</div></div>
+  <div class="stat-item"><div class="stat-number" data-target="7">0</div><div class="stat-label"><i class="fa-solid fa-swatchbook" style="color:var(--gold)"></i> Fabric Collections</div></div>
+  <div class="stat-item"><div class="stat-number" data-target="4">0</div><div class="stat-label"><i class="fa-solid fa-certificate" style="color:var(--gold)"></i> Global Certifications</div></div>
+  <div class="stat-item"><div class="stat-number" data-target="50">0</div><div class="stat-label"><i class="fa-solid fa-globe" style="color:var(--gold)"></i> Countries Served</div></div>
+</div>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-img-grid reveal">
+    <div class="about-img-box"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-multilayer-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10001.webp" alt="MultiLayer Fabrics" onerror="this.parentElement.style.background='#162646'"></div>
+    <div class="about-img-box"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-dobby-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10007.webp" alt="Dobby Fabrics" onerror="this.parentElement.style.background='#1e2f47'"></div>
+    <div class="about-img-box"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-jacquard-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10094.webp" alt="Jacquard Fabrics" onerror="this.parentElement.style.background='#162646'"></div>
+  </div>
+  <div class="reveal" style="transition-delay:.15s">
+    <p class="section-eyebrow">Our Story</p>
+    <h2 class="section-title">Weaving quality<br>into every <em>thread</em></h2>
+    <div class="divider"></div>
+    <p class="section-desc">Founded with a vision to bring world-class textile manufacturing to South India, Qualitty Fabrics has grown into a vertically integrated fabric manufacturer trusted across global markets. Our Perundurai facility combines advanced Sulzer and Airjet loom technology with artisan craftsmanship.</p>
+    <div class="about-features">
+      <div class="feat-card"><div class="feat-icon"><i class="fa-solid fa-industry" style="color:var(--gold)"></i></div><div class="feat-title">Vertical Manufacturing</div><div class="feat-desc">End-to-end from yarn to finished fabric.</div></div>
+      <div class="feat-card"><div class="feat-icon"><i class="fa-solid fa-globe" style="color:var(--gold)"></i></div><div class="feat-title">Global Standards</div><div class="feat-desc">Certified to meet international textile regulations.</div></div>
+      <div class="feat-card"><div class="feat-icon"><i class="fa-solid fa-flask" style="color:var(--gold)"></i></div><div class="feat-title">R&D Driven</div><div class="feat-desc">Continuous innovation in weave patterns and materials.</div></div>
+      <div class="feat-card"><div class="feat-icon"><i class="fa-solid fa-leaf" style="color:var(--gold)"></i></div><div class="feat-title">Sustainable</div><div class="feat-desc">GOTS certified organic processes, minimal footprint.</div></div>
+    </div>
+    <div style="margin-top:2rem"><a href="about.html" class="btn-outline">Learn More About Us →</a></div>
+  </div>
+</section>
+
+<!-- PRODUCTS PREVIEW -->
+<section class="products-preview">
+  <div class="reveal" style="max-width:700px">
+    <p class="section-eyebrow">Our Collections</p>
+    <h2 class="section-title">Premium fabric <em>collections</em></h2>
+    <div class="divider"></div>
+    <p class="section-desc">Built for fashion brands, home textile exporters and industrial buyers worldwide — each fabric crafted to global standards.</p>
+  </div>
+  <div class="prod-grid reveal" style="transition-delay:.1s">
+    <a class="prod-card" href="products.html#multilayer">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-multilayer-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10001.webp" alt="MultiLayer" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-layer-group"></i> Specialty</div><div class="prod-name">MultiLayer Fabrics</div><div class="prod-desc">Advanced multi-layer constructions for technical applications.</div></div>
+    </a>
+    <a class="prod-card" href="products.html#dobby">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-dobby-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10007.webp" alt="Dobby" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-grip"></i> Woven</div><div class="prod-name">Dobby Fabrics</div><div class="prod-desc">Geometric woven patterns for premium apparel.</div></div>
+    </a>
+    <a class="prod-card" href="products.html#jacquard">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-jacquard-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10094.webp" alt="Jacquard" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-vector-square"></i> Woven</div><div class="prod-name">Jacquard Fabrics</div><div class="prod-desc">Intricate motifs woven directly into the fabric structure.</div></div>
+    </a>
+    <a class="prod-card" href="products.html#yarndyed">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-yarn-dyed-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10115.webp" alt="Yarn Dyed" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-palette"></i> Woven</div><div class="prod-name">Yarn Dyed Fabrics</div><div class="prod-desc">Superior color fastness for checks, stripes and plaids.</div></div>
+    </a>
+    <a class="prod-card" href="products.html#stripesatin">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-stripe-satin-fabrics-manufacturers-in-perundurai-erode-tamilnadu-p10061.webp" alt="Stripe Satin" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-sparkles"></i> Satin</div><div class="prod-name">Stripe Satin Fabrics</div><div class="prod-desc">Lustrous stripe satin for bedding and high fashion.</div></div>
+    </a>
+    <a class="prod-card" href="products.html#special">
+      <div class="prod-img"><img src="https://www.qualittyfabrics.in/u/1541541623923348/m/25gag0f/qualitty-special-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india-p10109.webp" alt="Special" onerror="this.parentElement.style.background='#162646'"><div class="prod-img-overlay"></div></div>
+      <div class="prod-body"><div class="prod-tag"><i class="fa-solid fa-star"></i> Special</div><div class="prod-name">Textile Special Fabrics</div><div class="prod-desc">Unique constructions for specialist end applications.</div></div>
+    </a>
+  </div>
+  <div class="view-all-wrap reveal"><a href="products.html" class="btn-primary"><i class="fa-solid fa-arrow-right"></i> &nbsp;View All Products</a></div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section">
+  <div class="reveal">
+    <p class="section-eyebrow" style="justify-content:center">Certifications</p>
+    <h2 class="section-title" style="text-align:center">Globally <em>certified</em> quality</h2>
+    <div class="divider" style="margin:1.5rem auto 0"></div>
+  </div>
+  <div class="certs-grid reveal" style="transition-delay:.1s" id="certsGrid"></div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="reveal" style="text-align:center">
+    <p class="section-eyebrow" style="justify-content:center">How We Work</p>
+    <h2 class="section-title" style="text-align:center">From concept to <em>cloth</em></h2>
+    <div class="divider" style="margin:1.5rem auto 2rem"></div>
+  </div>
+  <div class="process-grid reveal" style="transition-delay:.1s">
+    <div class="proc-step"><div class="proc-icon"><i class="fa-solid fa-clipboard-list"></i></div><div class="proc-title">Enquiry</div><div class="proc-desc">Share your fabric requirements — weight, weave, composition and end use.</div></div>
+    <div class="proc-step"><div class="proc-icon"><i class="fa-solid fa-vials"></i></div><div class="proc-title">Sampling</div><div class="proc-desc">We develop lab-dip samples and swatches for your approval.</div></div>
+    <div class="proc-step"><div class="proc-icon"><i class="fa-solid fa-industry"></i></div><div class="proc-title">Production</div><div class="proc-desc">Bulk manufacturing with QC at every stage of weaving.</div></div>
+    <div class="proc-step"><div class="proc-icon"><i class="fa-solid fa-truck-fast"></i></div><div class="proc-title">Delivery</div><div class="proc-desc">Packed and dispatched with full documentation for global export.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner reveal">
+  <h2>Ready to <em>work together?</em></h2>
+  <p>Contact our team for samples, pricing, and bulk order enquiries.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-primary"><i class="fa-solid fa-envelope"></i> &nbsp;Get a Quote</a>
+    <a href="https://wa.me/919715988111" target="_blank" class="btn-outline" style="display:flex;align-items:center;gap:.5rem"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.527 5.837L0 24l6.335-1.652C8.021 23.34 9.97 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.861 0-3.601-.505-5.098-1.385l-.366-.218-3.78.986.991-3.694-.239-.378A9.795 9.795 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg> WhatsApp Us</a>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<div id="wa-slot"></div>
+<script src="shared.js"></script>
+<script>
+const IMGBASE = 'https://www.qualittyfabrics.in/u/1541541623923348/g/i/';
+// Hero badges
+document.getElementById('heroBadges').innerHTML = `
+  <img class="hero-badge-img" src="${IMGBASE}bci-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="BCI" title="BCI Member">
+  <img class="hero-badge-img" src="${IMGBASE}oeko-tex-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="OEKO-TEX" title="OEKO-TEX Certified">
+  <img class="hero-badge-img" src="${IMGBASE}supima-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="Supima" title="Supima Certified">
+  <img class="hero-badge-img" src="${IMGBASE}gots-organic-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="GOTS" title="GOTS Organic">`;
+
+// Certs grid
+document.getElementById('certsGrid').innerHTML = `
+  <div class="cert-card"><img src="${IMGBASE}bci-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="BCI"><div class="cert-name">BCI Member</div><div class="cert-no">Better Cotton Initiative<br>Membership No: 1003786</div></div>
+  <div class="cert-card"><img src="${IMGBASE}oeko-tex-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="OEKO-TEX"><div class="cert-name">OEKO-TEX®</div><div class="cert-no">Certified Safe Textiles<br>No: 1801001 Centexbel</div></div>
+  <div class="cert-card"><img src="${IMGBASE}supima-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="Supima"><div class="cert-name">Supima</div><div class="cert-no">Premium Cotton Certified<br>License: R38FWHT1</div></div>
+  <div class="cert-card"><img src="${IMGBASE}gots-organic-certified-textile-fabrics-manufacturers-in-perundurai-erode-tamilnadu-india.webp" alt="GOTS"><div class="cert-name">GOTS Organic</div><div class="cert-no">Global Organic Textile Standard<br>No: EGL/217560/GOTS</div></div>`;
+
+initPage('Home');
+
+// Stats counter
+const statsObs = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    document.querySelectorAll('.stat-number').forEach(el=>{
+      const target=parseInt(el.dataset.target);
+      let c=0;const step=Math.ceil(target/40);
+      const t=setInterval(()=>{c=Math.min(c+step,target);el.textContent=c+'+';if(c>=target)clearInterval(t);},40);
+    });
+    statsObs.disconnect();
+  }
+},{threshold:.5});
+statsObs.observe(document.querySelector('.stats-bar'));
+</script>
+</body>
+</html>
