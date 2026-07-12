@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Us — Qualitty Fabrics | Get a Quote, Perundurai, Erode</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.contact-main { padding:60px 5% 90px; }
+.contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
+
+/* Info Side */
+.contact-info {}
+.contact-card { background:var(--navy-mid); border:1px solid rgba(201,168,76,.15); border-radius:8px; padding:1.4rem; display:flex; align-items:flex-start; gap:1rem; margin-bottom:1rem; transition:border-color .25s; }
+.contact-card:hover { border-color:var(--gold); }
+.contact-card-icon { width:42px; height:42px; background:var(--gold-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.contact-card-icon i { color:var(--gold); font-size:.95rem; }
+.contact-card-label { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:.3rem; }
+.contact-card-value { font-size:.9rem; color:var(--white); line-height:1.6; }
+.contact-card-value a { color:var(--white); text-decoration:none; transition:color .2s; }
+.contact-card-value a:hover { color:var(--gold); }
+
+.social-row { display:flex; gap:.8rem; margin-top:1.5rem; }
+.social-btn { width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; color:var(--white-dim); text-decoration:none; font-size:.9rem; transition:all .2s; }
+.social-btn:hover { border-color:var(--gold); color:var(--gold); background:var(--gold-dim); }
+
+.map-box { margin-top:1.5rem; border-radius:8px; overflow:hidden; border:1px solid rgba(201,168,76,.15); height:220px; }
+.map-box iframe { width:100%; height:100%; border:0; filter:invert(90%) hue-rotate(180deg); }
+
+/* Form Side */
+.form-wrap { background:var(--navy-mid); border:1px solid rgba(201,168,76,.2); border-radius:10px; padding:2.5rem; }
+.form-title { font-family:var(--font-display); font-size:2rem; font-weight:400; color:var(--white); margin-bottom:.3rem; }
+.form-subtitle { font-size:.85rem; color:var(--white-dim); margin-bottom:2rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.form-group { margin-bottom:1.2rem; }
+.form-label { display:block; font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:.5rem; }
+.form-label span { color:var(--gold); }
+.form-control { width:100%; background:var(--navy); border:1px solid rgba(255,255,255,.12); border-radius:4px; padding:.75rem 1rem; color:var(--white); font-family:var(--font-body); font-size:.9rem; transition:border-color .2s; outline:none; }
+.form-control:focus { border-color:var(--gold); }
+.form-control option { background:var(--navy); }
+textarea.form-control { resize:vertical; min-height:100px; }
+.form-submit { width:100%; background:var(--gold); color:var(--navy); padding:1rem; font-family:var(--font-body); font-size:.85rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border:none; border-radius:4px; cursor:pointer; transition:background .2s; margin-top:.5rem; display:flex; align-items:center; justify-content:center; gap:.6rem; }
+.form-submit:hover { background:var(--gold-light); }
+.form-success { display:none; text-align:center; padding:3rem 1rem; }
+.form-success-icon { font-size:3.5rem; color:var(--gold); margin-bottom:1rem; }
+.form-success h3 { font-family:var(--font-display); font-size:1.8rem; color:var(--white); margin-bottom:.5rem; }
+.form-success p { font-size:.9rem; color:var(--white-dim); margin-bottom:1.5rem; line-height:1.7; }
+
+/* WA section */
+.wa-cta { background:linear-gradient(135deg,#0a2a1a,#0d1f14); border:1px solid rgba(37,211,102,.2); border-radius:8px; padding:1.5rem; margin-top:1.5rem; display:flex; align-items:center; gap:1.2rem; }
+.wa-cta-icon { width:48px; height:48px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.wa-cta-icon svg { width:26px; height:26px; fill:#fff; }
+.wa-cta-text h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:.2rem; }
+.wa-cta-text p { font-size:.78rem; color:rgba(255,255,255,.6); }
+.wa-cta-btn { margin-left:auto; background:#25D366; color:#fff; border:none; border-radius:4px; padding:.6rem 1.2rem; font-size:.78rem; font-weight:700; cursor:pointer; font-family:var(--font-body); white-space:nowrap; transition:background .2s; }
+.wa-cta-btn:hover { background:#20b858; }
+
+@media(max-width:900px){ .contact-grid { grid-template-columns:1fr; gap:3rem; } }
+@media(max-width:600px){ .form-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+    <h1>Let's talk <em>fabrics</em></h1>
+    <p>Whether you're a fashion brand, home textile exporter, or industrial buyer — reach out for samples, pricing and bulk enquiries. We respond within 24 hours.</p>
+  </div>
+</div>
+
+<div class="contact-main">
+  <div class="contact-grid">
+
+    <!-- LEFT: INFO -->
+    <div class="reveal">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="section-title" style="font-size:2rem">Contact <em>details</em></h2>
+      <div class="divider"></div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <div class="contact-card-label">Address</div>
+          <div class="contact-card-value">108 – C, Railway Station Road,<br>Perundurai, Tamilnadu, India – 638052</div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <div class="contact-card-label">Phone</div>
+          <div class="contact-card-value"><a href="tel:+919715988111">+91 97159 88111</a></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-value"><a href="mailto:info@qualittyfabrics.in">info@qualittyfabrics.in</a></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon"><i class="fa-solid fa-globe"></i></div>
+        <div>
+          <div class="contact-card-label">Website</div>
+          <div class="contact-card-value"><a href="https://www.qualittyfabrics.in" target="_blank">www.qualittyfabrics.in</a></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <div class="contact-card-label">Business Hours</div>
+          <div class="contact-card-value">Mon – Sat: 9:00 AM – 6:00 PM IST<br><span style="color:var(--white-dim);font-size:.8rem">Sunday: Closed</span></div>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a class="social-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://www.qualittyfabrics.in" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="https://twitter.com/intent/tweet?url=https://www.qualittyfabrics.in" target="_blank" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a class="social-btn" href="https://telegram.me/share/url?url=https://www.qualittyfabrics.in" target="_blank" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a class="social-btn" href="https://api.whatsapp.com/send?phone=919715988111&text=Hello" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.4607!2d77.5895!3d11.2733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDE2JzIzLjkiTiA3N8KwMzUnMjIuMiJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" title="Qualitty Fabrics Location"></iframe>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="form-wrap">
+        <div id="formBody">
+          <div class="form-title">Request a Quote</div>
+          <div class="form-subtitle">Fill in your requirements and our team will respond within 24 hours.</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name <span>*</span></label>
+              <input type="text" class="form-control" id="f_name" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company Name</label>
+              <input type="text" class="form-control" id="f_company" placeholder="Your company">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address <span>*</span></label>
+              <input type="email" class="form-control" id="f_email" placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone / WhatsApp</label>
+              <input type="tel" class="form-control" id="f_phone" placeholder="+91 or country code">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Country</label>
+              <input type="text" class="form-control" id="f_country" placeholder="Your country">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Quantity Required</label>
+              <input type="text" class="form-control" id="f_qty" placeholder="e.g. 500 meters">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Fabric Type <span>*</span></label>
+            <select class="form-control" id="f_fabric">
+              <option value="">— Select a fabric type —</option>
+              <option value="MultiLayer Fabrics">MultiLayer Fabrics</option>
+              <option value="Dobby Fabrics">Dobby Fabrics</option>
+              <option value="Jacquard Fabrics">Jacquard Fabrics</option>
+              <option value="Yarn Dyed Fabrics">Yarn Dyed Fabrics</option>
+              <option value="Stripe Satin Fabrics">Stripe Satin Fabrics</option>
+              <option value="Satin Fabrics">Satin Fabrics</option>
+              <option value="Special Fabrics">Textile Special Fabrics</option>
+              <option value="Multiple / Not sure">Multiple / Not sure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message / Requirements</label>
+            <textarea class="form-control" id="f_msg" placeholder="Describe your fabric requirements — composition, GSM, end use, certifications needed..."></textarea>
+          </div>
+
+          <button class="form-submit" onclick="submitForm()">
+            <i class="fa-solid fa-paper-plane"></i> Send Enquiry
+          </button>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>Enquiry Received!</h3>
+          <p>Thank you! Our team will review your requirements and get back to you within 24 hours.<br>For urgent enquiries, chat with us directly on WhatsApp.</p>
+          <a href="https://wa.me/919715988111" target="_blank" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> &nbsp;Chat on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="wa-cta">
+        <div class="wa-cta-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.527 5.837L0 24l6.335-1.652C8.021 23.34 9.97 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.861 0-3.601-.505-5.098-1.385l-.366-.218-3.78.986.991-3.694-.239-.378A9.795 9.795 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        </div>
+        <div class="wa-cta-text">
+          <h4>Prefer WhatsApp?</h4>
+          <p>Chat directly with our team — usually responds within minutes.</p>
+        </div>
+        <button class="wa-cta-btn" onclick="window.open('https://wa.me/919715988111?text=Hello, I am interested in your fabrics.','_blank')">Chat Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<div id="wa-slot"></div>
+<script src="shared.js"></script>
+<script>
+// Pre-fill fabric from URL param
+const params = new URLSearchParams(location.search);
+if (params.get('fabric')) {
+  document.getElementById('f_fabric').value = params.get('fabric');
+}
+
+function submitForm() {
+  const name  = document.getElementById('f_name').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const fab   = document.getElementById('f_fabric').value;
+  if (!name)  { alert('Please enter your name.'); return; }
+  if (!email) { alert('Please enter your email address.'); return; }
+  if (!fab)   { alert('Please select a fabric type.'); return; }
+
+  // Build WhatsApp message
+  const company = document.getElementById('f_company').value;
+  const phone   = document.getElementById('f_phone').value;
+  const country = document.getElementById('f_country').value;
+  const qty     = document.getElementById('f_qty').value;
+  const msg     = document.getElementById('f_msg').value;
+  const waText  = `*New Enquiry from Website*\n\n*Name:* ${name}\n*Company:* ${company||'—'}\n*Email:* ${email}\n*Phone:* ${phone||'—'}\n*Country:* ${country||'—'}\n*Fabric:* ${fab}\n*Quantity:* ${qty||'—'}\n*Message:* ${msg||'—'}`;
+
+  // Open WhatsApp with pre-filled message (backend integration point)
+  window.open('https://wa.me/919715988111?text=' + encodeURIComponent(waText), '_blank');
+
+  document.getElementById('formBody').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+initPage('Contact Us');
+</script>
+</body>
+</html>
