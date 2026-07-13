@@ -23,7 +23,7 @@ function buildNav(activePage) {
   <nav id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="${CERT.logo}" alt="Qualitty Fabrics Logo" onerror="this.style.display='none'">
-      Qualitty <span>Fabrics</span>
+      <span></span>
     </a>
     <ul class="nav-links" id="navLinks">${links}</ul>
     <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
